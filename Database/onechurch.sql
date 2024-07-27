@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2022 at 03:03 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.1.26
+-- Generation Time: Jul 27, 2024 at 10:37 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -38,8 +37,8 @@ CREATE TABLE `banks` (
   `transaction_method` varchar(255) DEFAULT NULL,
   `deposited_by` varchar(255) NOT NULL,
   `transaction_date` date NOT NULL,
-  `transaction_posting_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `transaction_posting_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `banks`
@@ -57,11 +56,11 @@ INSERT INTO `banks` (`id`, `currency`, `property`, `description`, `transaction_a
 
 CREATE TABLE `deposit` (
   `id` int(11) NOT NULL,
-  `bankname` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `bankname` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `account_no` int(15) NOT NULL,
-  `currency` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `currency` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `amount` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -76,8 +75,8 @@ CREATE TABLE `expence` (
   `resoan` varchar(500) NOT NULL,
   `expense` varchar(255) NOT NULL,
   `category` varchar(255) NOT NULL,
-  `CreationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `CreationDate` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `expence`
@@ -95,10 +94,10 @@ INSERT INTO `expence` (`id`, `date`, `amount`, `resoan`, `expense`, `category`, 
 
 CREATE TABLE `expensecategory` (
   `id` int(11) NOT NULL,
-  `categoryname` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `details` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `creation_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `categoryname` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `details` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `creation_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `expensecategory`
@@ -117,11 +116,11 @@ INSERT INTO `expensecategory` (`id`, `categoryname`, `details`, `creation_date`)
 
 CREATE TABLE `expensename` (
   `id` int(11) NOT NULL,
-  `categoryname` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `expensename` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `registeredby` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `creation_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `categoryname` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `expensename` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `registeredby` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `creation_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `expensename`
@@ -145,8 +144,8 @@ CREATE TABLE `general_jaunal` (
   `credit` varchar(15) NOT NULL,
   `debit` varchar(15) NOT NULL,
   `ref_no` varchar(25) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `general_jaunal`
@@ -172,12 +171,12 @@ CREATE TABLE `newfiles` (
   `type` varchar(255) NOT NULL DEFAULT 'application/octet-stream',
   `description` varchar(255) NOT NULL DEFAULT 'File Transfer',
   `disposition` varchar(255) NOT NULL DEFAULT 'attachment',
-  `expires` int(11) NOT NULL DEFAULT '0',
+  `expires` int(11) NOT NULL DEFAULT 0,
   `cache` varchar(255) NOT NULL DEFAULT 'must-revalidate',
   `pragma` varchar(255) NOT NULL DEFAULT 'public',
   `downloads` int(11) NOT NULL,
   `size` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -187,12 +186,12 @@ CREATE TABLE `newfiles` (
 
 CREATE TABLE `permissions` (
   `id` int(11) NOT NULL,
-  `permission` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `permission` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `createuser` varchar(255) DEFAULT NULL,
   `deleteuser` varchar(255) DEFAULT NULL,
   `createbid` varchar(255) DEFAULT NULL,
   `updatebid` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -202,9 +201,9 @@ CREATE TABLE `permissions` (
 
 CREATE TABLE `petty_balance` (
   `id` int(11) NOT NULL,
-  `property` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `property` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `balance` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -220,7 +219,7 @@ CREATE TABLE `petty_cash` (
   `amount` varchar(500) NOT NULL,
   `method` varchar(255) NOT NULL,
   `initiatedby` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
 
@@ -234,7 +233,7 @@ CREATE TABLE `store_out` (
   `item` varchar(500) NOT NULL,
   `quantity` varchar(500) NOT NULL,
   `itemsoutvalue` int(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `store_out`
@@ -259,7 +258,7 @@ CREATE TABLE `store_stock` (
   `quantity_remaining` varchar(500) NOT NULL,
   `itemvalue` int(15) NOT NULL,
   `status` varchar(255) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `store_stock`
@@ -287,18 +286,19 @@ CREATE TABLE `tbladmin` (
   `LastName` varchar(255) DEFAULT NULL,
   `MobileNumber` bigint(10) DEFAULT NULL,
   `Email` varchar(200) DEFAULT NULL,
-  `Status` int(11) NOT NULL DEFAULT '1',
-  `Photo` varchar(255) CHARACTER SET latin1 NOT NULL DEFAULT 'avatar15.jpg',
+  `Status` int(11) NOT NULL DEFAULT 1,
+  `Photo` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 'avatar15.jpg',
   `Password` varchar(120) DEFAULT NULL,
-  `AdminRegdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `AdminRegdate` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbladmin`
 --
 
 INSERT INTO `tbladmin` (`ID`, `Staffid`, `AdminName`, `UserName`, `FirstName`, `LastName`, `MobileNumber`, `Email`, `Status`, `Photo`, `Password`, `AdminRegdate`) VALUES
-(2, 'U001', 'Admin', 'admin', 'Nikhil', 'Bhalerao', 9423979339, 'ndbhalerao91@gmail.com', 1, 'pro4.jpg', '21232f297a57a5a743894a0e4a801fc3', '2021-07-21 10:18:39');
+(2, 'U001', 'Admin', 'admin', 'Frankie', 'Jones', 1119397473, 'frankiejones@bemcc.com', 1, 'pro4.jpg', '21232f297a57a5a743894a0e4a801fc3', '2021-07-21 10:18:39'),
+(31, 'U006', 'Admin', 'kavoldski', 'Cedric', 'Hilary', 183743375, 'kavoldski@bemcc.com', 1, 'avatar15.jpg', 'e10adc3949ba59abbe56e057f20f883e', '2024-07-27 08:10:25');
 
 -- --------------------------------------------------------
 
@@ -308,17 +308,17 @@ INSERT INTO `tbladmin` (`ID`, `Staffid`, `AdminName`, `UserName`, `FirstName`, `
 
 CREATE TABLE `tblattendancy` (
   `ID` int(11) NOT NULL,
-  `Name` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
-  `Sex` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
-  `Age` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
-  `District` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
-  `Village` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `Name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `Sex` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `Age` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `District` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `Village` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `Phone` int(10) DEFAULT NULL,
   `Cdate` date DEFAULT NULL,
   `Temperature` int(10) DEFAULT NULL,
-  `Registeredby` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
-  `lastname` varchar(255) CHARACTER SET latin1 DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `Registeredby` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `lastname` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tblattendancy`
@@ -336,22 +336,22 @@ INSERT INTO `tblattendancy` (`ID`, `Name`, `Sex`, `Age`, `District`, `Village`, 
 
 CREATE TABLE `tblbaptism` (
   `ID` int(10) NOT NULL,
-  `Name` varchar(200) CHARACTER SET utf8mb4 NOT NULL,
+  `Name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Secondname` varchar(255) DEFAULT NULL,
   `Photo` varchar(255) NOT NULL,
-  `Sex` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `Occupation` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `Country` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `Parish` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `Sex` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Occupation` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Country` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Parish` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `Village` varchar(255) DEFAULT NULL,
-  `District` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `District` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `Email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci DEFAULT NULL,
   `Phone` int(10) DEFAULT NULL,
   `Registeredby` varchar(200) DEFAULT NULL,
   `lastname` varchar(255) NOT NULL,
   `Birthdate` varchar(255) DEFAULT NULL,
-  `CreationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `CreationDate` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -361,17 +361,17 @@ CREATE TABLE `tblbaptism` (
 
 CREATE TABLE `tblchristian` (
   `ID` int(10) NOT NULL,
-  `Name` varchar(200) CHARACTER SET utf8mb4 NOT NULL,
-  `Code` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `number` int(11) NOT NULL DEFAULT '1',
-  `Age` int(11) NOT NULL DEFAULT '1',
-  `Sex` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `Occupation` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `Status` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `Country` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `Parish` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `Name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `number` int(11) NOT NULL DEFAULT 1,
+  `Age` int(11) NOT NULL DEFAULT 1,
+  `Sex` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Occupation` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Country` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Parish` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `Village` varchar(255) DEFAULT NULL,
-  `District` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `District` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `Email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci DEFAULT NULL,
   `Phone` int(10) DEFAULT NULL,
   `Photo` varchar(255) DEFAULT NULL,
@@ -379,18 +379,16 @@ CREATE TABLE `tblchristian` (
   `Registeredby` varchar(200) DEFAULT NULL,
   `lastname` varchar(255) NOT NULL,
   `Birthdate` varchar(255) DEFAULT NULL,
-  `CreationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `CreationDate` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tblchristian`
 --
 
 INSERT INTO `tblchristian` (`ID`, `Name`, `Code`, `number`, `Age`, `Sex`, `Occupation`, `Status`, `Country`, `Parish`, `Village`, `District`, `Email`, `Phone`, `Photo`, `Marital`, `Registeredby`, `lastname`, `Birthdate`, `CreationDate`) VALUES
-(1, 'Aiden Christ', '312654', 1, 26, 'Male', 'Doctor', 'Baptised', 'India', 'Shau marg, behind relience petrol pump', 'Nashik', 'Nashik', 'aidenchrist7@gmail.com', 2147483647, 'face21.jpg', 'Married', 'Nikhil', 'Bhalerao', '1997-03-25', '2022-03-11 06:01:53'),
-(2, 'Benjamin Smith', '56132', 1, 31, 'Male', 'Bussiness man', 'Baptised', 'India', 'Ravishankar marg, behinde Jahagirdar bakers', 'Nashik', 'Nashik', 'benjaminsmith654@gmail.com', 2147483647, 'face22.jpg', 'Single', 'Nikhil', 'Bhalerao', '1991-06-29', '2022-03-11 06:07:38'),
-(3, 'Camila Saliba', '65410', 1, 21, 'Female', 'Engineer', 'Not-Baptised', 'India', 'Galaxy Apartment, Subhodh towr', 'Nashik', 'Nashik', 'camilasaliba684@gmail.com', 2147483647, 'face11.jpg', 'Single', 'Nikhil', 'Bhalerao', '1999-11-11', '2022-03-11 06:11:01'),
-(4, 'Remo Dsouza', '344233', 1, 41, 'Male', 'Engineer', 'Baptised', 'India', 'Dsouza Colony, Galaxy heights', 'Pune', 'Pune', 'remo768568@gmail.com', 2147483647, 'face16.jpg', 'Married', 'Nikhil', 'Bhalerao', '1981-11-11', '2022-03-11 08:54:45');
+(1, 'Frankie Jones anak Saing', '312654', 1, 31, 'Male', 'Technician', 'Baptised', 'Iban', 'BEM Central City', 'Kampung Saratok', 'Saratok', 'frankiejones99@gmail.com', 111111111, 'face21.jpg', 'Single', 'Nikhil', 'Bhalerao', '1997-03-25', '2022-03-11 06:01:53'),
+(5, 'Cedric Hilary Samah', '001206130199', 1, 24, 'Male', 'Bussiness man', 'Baptised', 'Malaysia', 'Jalan Allamanda 2', 'Kampung Data Kakus', 'Bintulu', 'kavoldski@gmail.com', 183743375, '449176931_805371258365420_7486760121003106164_n.jpg', 'Single', 'Nikhil', 'Bhalerao', '2000-12-06', '2024-07-27 07:57:26');
 
 -- --------------------------------------------------------
 
@@ -400,23 +398,23 @@ INSERT INTO `tblchristian` (`ID`, `Name`, `Code`, `number`, `Age`, `Sex`, `Occup
 
 CREATE TABLE `tblcompany` (
   `id` int(11) NOT NULL,
-  `regno` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
-  `companyname` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
-  `companyemail` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
-  `country` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `regno` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `companyname` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `companyemail` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `country` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `companyphone` text NOT NULL,
-  `companyaddress` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `companylogo` varchar(255) CHARACTER SET latin1 NOT NULL DEFAULT 'avatar15.jpg',
-  `status` varchar(255) CHARACTER SET latin1 NOT NULL DEFAULT '0',
-  `creationdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `companyaddress` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `companylogo` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 'avatar15.jpg',
+  `status` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '0',
+  `creationdate` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tblcompany`
 --
 
 INSERT INTO `tblcompany` (`id`, `regno`, `companyname`, `companyemail`, `country`, `companyphone`, `companyaddress`, `companylogo`, `status`, `creationdate`) VALUES
-(1, '123456', 'One Church', 'onechurch@gmail.com', 'India', '+919423979339', 'Shivaji Nagar, Nashik', 'logo.png', '0', '2022-03-11 05:56:05');
+(1, '123456', 'BEM Central City', 'bemcentralcity@gmail.com', 'India', '0183743375', 'BEM Central City, 94300 Kota Samarahan, Sarawak', 'logo.png', '0', '2022-03-11 05:56:05');
 
 -- --------------------------------------------------------
 
@@ -426,10 +424,10 @@ INSERT INTO `tblcompany` (`id`, `regno`, `companyname`, `companyemail`, `country
 
 CREATE TABLE `tblitems` (
   `id` int(11) NOT NULL,
-  `item` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
-  `description` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
-  `Creationdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `item` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `description` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `Creationdate` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tblitems`
@@ -450,15 +448,15 @@ INSERT INTO `tblitems` (`id`, `item`, `description`, `Creationdate`) VALUES
 
 CREATE TABLE `tblloans` (
   `id` int(11) NOT NULL,
-  `bankname` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `bankname` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `phone` int(10) NOT NULL,
   `promisedamount` int(11) NOT NULL,
   `loanamount` int(11) NOT NULL,
-  `currency` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `loandescription` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `currency` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `loandescription` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `date` date NOT NULL,
-  `depositedby` varchar(255) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `depositedby` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tblloans`
@@ -476,21 +474,21 @@ INSERT INTO `tblloans` (`id`, `bankname`, `phone`, `promisedamount`, `loanamount
 
 CREATE TABLE `tblmarriage` (
   `ID` int(10) NOT NULL,
-  `Name` varchar(200) CHARACTER SET utf8mb4 NOT NULL,
-  `Age` int(11) NOT NULL DEFAULT '1',
-  `Sex` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `Occupation` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `Country` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `Parish` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `Name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Age` int(11) NOT NULL DEFAULT 1,
+  `Sex` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Occupation` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Country` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Parish` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `Village` varchar(255) DEFAULT NULL,
-  `District` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `District` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `Email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci DEFAULT NULL,
   `Phone` int(10) DEFAULT NULL,
   `Registeredby` varchar(200) DEFAULT NULL,
   `lastname` varchar(255) NOT NULL,
   `Birthdate` varchar(255) DEFAULT NULL,
-  `CreationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `CreationDate` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -500,12 +498,12 @@ CREATE TABLE `tblmarriage` (
 
 CREATE TABLE `tblnotification` (
   `id` int(11) NOT NULL,
-  `nature` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `nature` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `amount` int(11) NOT NULL,
   `total` int(11) NOT NULL,
-  `status` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `creationdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `status` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `creationdate` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tblnotification`
@@ -522,13 +520,13 @@ INSERT INTO `tblnotification` (`id`, `nature`, `amount`, `total`, `status`, `cre
 
 CREATE TABLE `tbloffertory` (
   `id` int(11) NOT NULL,
-  `currency` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `currency` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `offertoryamount` int(10) NOT NULL,
-  `description` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `depositedby` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `description` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `depositedby` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `status` varchar(255) NOT NULL DEFAULT 'on',
-  `date` varchar(255) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `date` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -538,12 +536,12 @@ CREATE TABLE `tbloffertory` (
 
 CREATE TABLE `tblpayments` (
   `id` int(11) NOT NULL,
-  `companyname` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `companyname` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `paidamount` int(11) NOT NULL,
   `transaction` int(11) NOT NULL,
   `paiddate` date NOT NULL,
-  `attachment` varchar(255) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `attachment` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -556,8 +554,8 @@ CREATE TABLE `tblservice` (
   `ServiceName` varchar(200) DEFAULT NULL,
   `population` int(11) DEFAULT NULL,
   `SerDes` varchar(250) NOT NULL,
-  `CreationDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `CreationDate` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -788,7 +786,7 @@ ALTER TABLE `store_stock`
 -- AUTO_INCREMENT for table `tbladmin`
 --
 ALTER TABLE `tbladmin`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `tblattendancy`
@@ -806,7 +804,7 @@ ALTER TABLE `tblbaptism`
 -- AUTO_INCREMENT for table `tblchristian`
 --
 ALTER TABLE `tblchristian`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tblcompany`

@@ -19,7 +19,7 @@ check_login();
 				
 				<div class="content-wrapper">  
 					<strong style="color: red; background-color: white;">
-                        Selamat Datang Ke Portal Rasmi BEM CENTRAL CITY</strong>
+                        Welcome to BEM Central City</strong>
                         <br><br>
 					<div class="row">
 						<div class="col-md-6">
