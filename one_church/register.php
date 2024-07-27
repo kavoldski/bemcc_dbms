@@ -120,7 +120,7 @@ if(!empty($_POST["companyname"])) {
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left p-5">
                             <div class="brand-logo" align="center">
-                                <img class="img-avatar" src="profileimages/compconsult2.jpg" alt="">
+                                <img class="img-avatar" src="/BEMCC/bemcc_dbms/one_church/assets/img/companyimages/logos.png" alt="">
                             </div>
                             <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
                             <form class="pt-3" method="post" enctype="multipart/form-data" name="signup" onSubmit="return valid();">
@@ -150,6 +150,7 @@ if(!empty($_POST["companyname"])) {
                                         <option value="India">India</option>
                                         <option value="Germany">Germany</option>
                                         <option value="Argentina">Argentina</option>
+                                        <option value="Malaysia">Malaysia</option>
                                     </select>
                                 </div>
                                 <div class="form-group mb-3">
