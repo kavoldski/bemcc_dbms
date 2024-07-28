@@ -110,7 +110,7 @@ check_login();
                       <td class="text-center"><?php  echo htmlentities($row->Code);?></td>
                       <td class="text-center"><?php  echo htmlentities($row->Country);?></td>
                       <td class=""><?php  echo htmlentities($row->Village);?></td>
-                      <td class=""><?php  echo htmlentiti es($row->Phone);?></td>
+                      <td class=""><?php  echo htmlentities($row->Phone);?></td>
                       <td class=""><?php  echo htmlentities($row->Registeredby);?></td>
                       <td class=" text-center"><a href="#"  class="edit_data4 btn btn-info rounded-circle" id="<?php echo  ($row->ID); ?>" title="click to edit"><i class="mdi mdi-pencil-box-outline" aria-hidden="true"></i></a>
 
