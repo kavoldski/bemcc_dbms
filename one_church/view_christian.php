@@ -61,7 +61,7 @@ include('includes/dbconnection.php');
         <td><?php  echo $row->District;?></td>
       </tr>
       <tr>
-        <th>Parish</th>
+        <th>Street</th>
         <td><?php  echo $row->Parish;?> </td>
         <th>Village</th>
         <td><?php  echo $row->Village;?></td>

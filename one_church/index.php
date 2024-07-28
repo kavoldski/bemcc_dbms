@@ -64,7 +64,7 @@ if(isset($_POST['login']))
                     <div class="col-md-6 p-0">
                         <div class="auth-form-light text-left p-5">
                             <div class="" align="center">
-                                <img style="width: 250px;"class="img-avatar mb-6" src="assets/img/companyimages/logo.png" alt="">
+                                <img style="width: 250px;"class="img-avatar mb-6" src="\BEMCC\bemcc_dbms\one_church\assets\img\companyimages\logos.png" alt="">
                             </div>
                             <form role="form" id=""  method="post" enctype="multipart/form-data" class="col-md-8 mx-auto">  
                                 <div class="form-group first ">
