@@ -169,8 +169,29 @@ if(!empty($_POST["code"])) {
                           <option value="">Select occupation</option>
                           <option value="Doctor">Doctor</option>
                           <option value="Lawyer">Lawyer</option>
-                          <option value="Engineer">Engineer</option>
+                          <option value="Software Engineer">Software Engineer</option>
                           <option value="Bussiness man">Bussiness man</option>
+                          <option value="Penolong Pengarah Pendidikan">Penolong Pengarah Pendidikan</option>
+                          <option value="Juruteknik">Juruteknik</option>
+                          <option value="Manager">Manager</option>
+                          <option value="Pengawai Ehwal Ekonomi">Pengawai Ehwal Ekonomi</option>
+                          <option value="Pegawai Polis">Pegawai Polis</option>
+                          <option value="Project Accounts Executive">Project Accounts Executive</option>
+                          <option value="Pesara Tentera">Pesara Tentera</option>
+                          <option value="Bomba">Bomba</option>
+                          <option value="Customer Service Engineer">Customer Service Engineer</option>
+                          <option value="Pensyarah">Pensyarah</option>
+                          <option value="Pembantu pendaftaran">Pembantu pendaftaran</option>
+                          <option value="Technician Civil">Technician Civil</option>
+                          <option value="Clerk">Clerk</option>
+                          <option value="Guru">Guru</option>
+                          <option value="Penjawat Awam">Penjawat Awam</option>
+                          <option value="Ketua Jururawat">Ketua Jururawat</option>
+                          <option value="Geology">Geology</option>
+                          <option value="Pegawai Tadbir N41">Pegawai Tadbir N41</option>
+                          <option value="Technician">Technician</option>
+                          <option value="Suri Rumah">Suri Rumah</option>
+                          <option value="Penolong Pegawai Perubatan">Penolong Pegawai Perubatan</option>
                         </select>
                       </div>
                     </div>

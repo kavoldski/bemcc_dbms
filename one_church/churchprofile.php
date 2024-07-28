@@ -65,10 +65,10 @@ if(isset($_POST['submit']))
                                                     <label class="control-label" for="basicinput">Logo</label>
                                                     <div class="controls">
                                                         <?php 
-                                                        if($row->companylogo=="/BEMCC/bemcc_dbms/one_church/assets/img/avatars/avatar15.jpg")
+                                                        if($row->companylogo=="/BEMCC/bemcc_dbms/one_church/assets/img/avatars/logos.png")
                                                         { 
                                                             ?>
-                                                            <img class=""  src="assets/img/avatars/avatar15.jpg" alt="" width="100" height="100">
+                                                            <img class=""  src="assets/img/avatars/logos.png" alt="" width="100" height="100">
                                                             <?php 
                                                         } else { ?>
                                                             <img style="height: 100px; width: 100px;" src="assets/img/companyimages/<?php  echo $row->companylogo;?>" width="150" height="100">
