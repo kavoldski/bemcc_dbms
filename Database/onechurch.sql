@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2024 at 10:37 AM
+-- Generation Time: Jul 28, 2024 at 04:09 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,14 +40,6 @@ CREATE TABLE `banks` (
   `transaction_posting_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
---
--- Dumping data for table `banks`
---
-
-INSERT INTO `banks` (`id`, `currency`, `property`, `description`, `transaction_amount`, `transaction_ref`, `transaction_method`, `deposited_by`, `transaction_date`, `transaction_posting_date`) VALUES
-(1, 'USD', '', 'general', 51000, 65321, 'Cash', 'Nikhil', '2022-03-11', '2022-03-11 06:24:29'),
-(2, 'INR', '', 'payment by nikhil', 2500, 0, 'Cheque', 'Nikhil', '2022-03-11', '2022-03-11 08:59:46');
-
 -- --------------------------------------------------------
 
 --
@@ -78,14 +70,6 @@ CREATE TABLE `expence` (
   `CreationDate` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
---
--- Dumping data for table `expence`
---
-
-INSERT INTO `expence` (`id`, `date`, `amount`, `resoan`, `expense`, `category`, `CreationDate`) VALUES
-(1, '2022-03-11', 50, 'for office use', 'paper and pens for function', ' Office supplies', '2022-03-11 06:21:54'),
-(2, '2022-03-11', 25100, 'for office use', 'Computer System Purchase', 'Equipment', '2022-03-11 06:23:32');
-
 -- --------------------------------------------------------
 
 --
@@ -106,7 +90,8 @@ CREATE TABLE `expensecategory` (
 INSERT INTO `expensecategory` (`id`, `categoryname`, `details`, `creation_date`) VALUES
 (1, 'Office supplies', 'for office use', '2022-03-11 06:22:27'),
 (3, 'Equipment', 'For office use', '2022-03-11 06:22:23'),
-(4, 'Rent', 'For office use', '2022-03-11 06:18:25');
+(4, 'Rent', 'For office use', '2022-03-11 06:18:25'),
+(5, 'Barangan Media', '', '2024-07-28 09:43:36');
 
 -- --------------------------------------------------------
 
@@ -129,7 +114,14 @@ CREATE TABLE `expensename` (
 INSERT INTO `expensename` (`id`, `categoryname`, `expensename`, `registeredby`, `creation_date`) VALUES
 (1, '1', 'pens and paper', 'Nikhil', '2022-03-11 06:14:58'),
 (2, '3', ' computers', 'Nikhil', '2022-03-11 06:16:58'),
-(3, '4', ' additional office space', 'Nikhil', '2022-03-11 06:18:40');
+(3, '4', ' additional office space', 'Nikhil', '2022-03-11 06:18:40'),
+(4, '5', ' ', 'Frankie', '2024-07-28 09:43:55'),
+(5, '5', ' Camera', 'Frankie', '2024-07-28 09:45:08'),
+(6, '5', ' Lens Camera', 'Frankie', '2024-07-28 09:45:28'),
+(7, '5', ' Hdmi Cable', 'Frankie', '2024-07-28 09:46:33'),
+(8, '5', ' Connector Usb to Hdmi', 'Frankie', '2024-07-28 09:48:31'),
+(9, '5', ' Hdmi Splitter', 'Frankie', '2024-07-28 09:53:07'),
+(10, '5', ' Usb Type-C', 'Frankie', '2024-07-28 09:56:23');
 
 -- --------------------------------------------------------
 
@@ -373,7 +365,7 @@ CREATE TABLE `tblchristian` (
   `Village` varchar(255) DEFAULT NULL,
   `District` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `Email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `Phone` int(10) DEFAULT NULL,
+  `Phone` varchar(12) DEFAULT NULL,
   `Photo` varchar(255) DEFAULT NULL,
   `Marital` varchar(255) DEFAULT NULL,
   `Registeredby` varchar(200) DEFAULT NULL,
@@ -387,8 +379,17 @@ CREATE TABLE `tblchristian` (
 --
 
 INSERT INTO `tblchristian` (`ID`, `Name`, `Code`, `number`, `Age`, `Sex`, `Occupation`, `Status`, `Country`, `Parish`, `Village`, `District`, `Email`, `Phone`, `Photo`, `Marital`, `Registeredby`, `lastname`, `Birthdate`, `CreationDate`) VALUES
-(1, 'Frankie Jones anak Saing', '312654', 1, 31, 'Male', 'Technician', 'Baptised', 'Iban', 'BEM Central City', 'Kampung Saratok', 'Saratok', 'frankiejones99@gmail.com', 111111111, 'face21.jpg', 'Single', 'Nikhil', 'Bhalerao', '1997-03-25', '2022-03-11 06:01:53'),
-(5, 'Cedric Hilary Samah', '001206130199', 1, 24, 'Male', 'Bussiness man', 'Baptised', 'Malaysia', 'Jalan Allamanda 2', 'Kampung Data Kakus', 'Bintulu', 'kavoldski@gmail.com', 183743375, '449176931_805371258365420_7486760121003106164_n.jpg', 'Single', 'Nikhil', 'Bhalerao', '2000-12-06', '2024-07-27 07:57:26');
+(1, 'Frankie Jones anak Saing', '312654', 1, 31, 'Male', 'Technician', 'Baptised', 'Iban', 'BEM Central City', 'Kampung Saratok', 'Saratok', 'frankiejones99@gmail.com', '111111111', 'face21.jpg', 'Single', 'Nikhil', 'Bhalerao', '1997-03-25', '2022-03-11 06:01:53'),
+(5, 'Cedric Hilary Samah', '001206130199', 1, 24, 'Male', 'Bussiness man', 'Baptised', 'Malaysia', 'Jalan Allamanda 2', 'Kampung Data Kakus', 'Bintulu', 'kavoldski@gmail.com', '183743375', '449176931_805371258365420_7486760121003106164_n.jpg', 'Single', 'Nikhil', 'Bhalerao', '2000-12-06', '2024-07-27 07:57:26'),
+(6, 'Joshua Caseley Anak Akun', 'CC0001', 1, 42, 'Male', 'Penolong Pengarah Pendidikan', 'Baptised', 'Malaysia', 'NA', 'Julau Pakan Sarikei', 'No.45c, Taman Berangan Height', 'caselee1982@yahoo.com', '0138179369', '', 'Married', 'Frankie', 'Jones', '1982-05-07', '2024-07-27 15:51:54'),
+(7, 'Bolton Bigin Anak Tumas', 'CC0002', 1, 31, 'Male', 'Software Engineer', 'Baptised', 'Malaysia', 'NA', 'Sabah', 'P1-o3-06 Taman Vista Ilmu ', 'boltonbigin@gmail.com', '0143914385', '', 'Married', 'Frankie', 'Jones', '1993-10-18', '2024-07-28 08:08:14'),
+(8, 'Lawrence Cornelius Anak Sijem', 'CC0003', 1, 44, 'Male', 'Juruteknik', 'Baptised', 'Malaysia', 'Taman Univista, Kuching-samarahan Expressway 94300 Kota Samarahan', 'Kampung Singai', '44e, Lorong 3c,', 'mantre55@yahoo.com', '0198652602', '', 'Married', 'Frankie', 'Jones', '1980-02-02', '2024-07-28 08:27:37'),
+(9, 'Christopher Anak Kayad', 'CC0004', 1, 46, 'Male', 'Manager', 'Baptised', 'Malaysia', 'Taman Desa Ilmu, Jln Datuk Muhammad Musa, 94300 Kota Samarahan', '', 'No.164, Lorong 22b1', 'kriztopper78@gmail.com', '0198595467', '', 'Married', 'Frankie', 'Jones', '1978-03-26', '2024-07-28 08:35:35'),
+(10, 'Roland Le', 'CC0005', 1, 44, 'Male', 'Pengawai Ehwal Ekonomi', 'Baptised', 'Malaysia', 'Tmn Samarindah Baru, Samarindah, Kota Samarahan', '', 'No.151, Lrg 18s9,', 'rollonjesus@yahoo.com', '0105076154', '', 'Married', 'Frankie', 'Jones', '1978-08-03', '2024-07-28 08:38:33'),
+(11, 'Tansli Mering', 'CC0006', 1, 49, 'Male', 'Pegawai Polis', 'Baptised', 'Malaysia', 'Taman Samarindah Kota Samarahan', '', 'No.866 Lorong 4b4', 'tanslimering@gmail.com', '0133098821', '', 'Married', 'Frankie', 'Jones', '1975-01-31', '2024-07-28 08:59:02'),
+(12, 'Dolly Jenil', 'CC0007', 1, 42, 'Female', 'Project Accounts Executive', 'Baptised', 'Malaysia', 'Jln Dato Muhd Musa, 94300 Kota Samarahan', '', '48 Kpg Merdang Gayam,', 'dollyjenil82@gmail.com', '01113106122', '', 'Married', 'Frankie', 'Jones', '1982-12-17', '2024-07-28 09:01:15'),
+(13, 'Johnny Anak Umus', 'CC0008', 1, 49, 'Male', 'Pesara Tentera', 'Baptised', 'Malaysia', 'Taman Desa Murni Jalan Dato Mohd Musa 93400 Kota Samarahan Sarawak ', '', 'Lot 7', 'anyukduan@gmail.com', '01114042701', '', 'Married', 'Frankie', 'Jones', '1975-02-20', '2024-07-28 09:05:10'),
+(14, 'Deday Kipli', 'CC0009', 1, 42, 'Male', 'Bomba', 'Baptised', 'Malaysia', 'Taman Palm Villa Kota Samarahan', '', 'No.152 Lorong 9 ', 'dedaykipli@gmail.com', '0138046207', '', 'Married', 'Frankie', 'Jones', '1982-05-08', '2024-07-28 09:10:28');
 
 -- --------------------------------------------------------
 
@@ -414,7 +415,7 @@ CREATE TABLE `tblcompany` (
 --
 
 INSERT INTO `tblcompany` (`id`, `regno`, `companyname`, `companyemail`, `country`, `companyphone`, `companyaddress`, `companylogo`, `status`, `creationdate`) VALUES
-(1, '123456', 'BEM Central City', 'bemcentralcity@gmail.com', 'India', '0183743375', 'BEM Central City, 94300 Kota Samarahan, Sarawak', 'logo.png', '0', '2022-03-11 05:56:05');
+(1, '123456', 'BEM Central City', 'bemcentralcity@gmail.com', 'Malaysia', '0178073031', 'BEM Central City, 94300 Kota Samarahan, Sarawak', 'logo.png', '0', '2022-03-11 05:56:05');
 
 -- --------------------------------------------------------
 
@@ -504,13 +505,6 @@ CREATE TABLE `tblnotification` (
   `status` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `creationdate` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tblnotification`
---
-
-INSERT INTO `tblnotification` (`id`, `nature`, `amount`, `total`, `status`, `creationdate`) VALUES
-(1, 'deducted for rent pay ', 500, 1000, 'on', '2022-03-11 07:34:53');
 
 -- --------------------------------------------------------
 
@@ -732,13 +726,13 @@ ALTER TABLE `expence`
 -- AUTO_INCREMENT for table `expensecategory`
 --
 ALTER TABLE `expensecategory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `expensename`
 --
 ALTER TABLE `expensename`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `general_jaunal`
@@ -804,7 +798,7 @@ ALTER TABLE `tblbaptism`
 -- AUTO_INCREMENT for table `tblchristian`
 --
 ALTER TABLE `tblchristian`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tblcompany`
