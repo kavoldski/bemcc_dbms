@@ -19,11 +19,11 @@ if(isset($_POST['submit']))
         $description=$expense.": ".$reason;
         $amount=$_POST['amount'];
         $expensecategory=$_POST['expensecategory'];
-        $sql="insert into expence(date,resoan,amount,category,expense)values(:date,:reason,:amount,:expensecategory,:expense) ";
+        $sql="insert into expence(date,amount,resoan,expense,category)values(:date,:reason,:expense,:expensecategory) ";
         $query=$dbh->prepare($sql);
         $query->bindParam(':date',$date,PDO::PARAM_STR);
         $query->bindParam(':reason',$description,PDO::PARAM_STR);
-        $query->bindParam(':amount',$amount,PDO::PARAM_STR);
+        //$query->bindParam(':amount',$amount,PDO::PARAM_STR);
         $query->bindParam(':expense',$expense,PDO::PARAM_STR);
         $query->bindParam(':expensecategory',$expensecategory,PDO::PARAM_STR);
         $query->execute();
