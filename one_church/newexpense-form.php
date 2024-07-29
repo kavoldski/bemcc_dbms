@@ -14,16 +14,16 @@ if(isset($_POST['submit']))
       $amount=$_POST['amount'];
       if($amount<=$originalaccount){
         $date=$_POST['date'];
-        $reason=$_POST['reason'];
+        $reason=$_POST['resoan'];
         $expense=$_POST['expense'];
         $description=$expense.": ".$reason;
         $amount=$_POST['amount'];
         $expensecategory=$_POST['expensecategory'];
-        $sql="insert into expence(date,amount,resoan,expense,category)values(:date,:reason,:expense,:expensecategory) ";
+        $sql="insert into expence(date,amount,reason,expense,category)values(:date,:amount,:resoan,:expense,:expensecategory) ";
         $query=$dbh->prepare($sql);
         $query->bindParam(':date',$date,PDO::PARAM_STR);
-        $query->bindParam(':reason',$description,PDO::PARAM_STR);
-        //$query->bindParam(':amount',$amount,PDO::PARAM_STR);
+        $query->bindParam(':resoan',$description,PDO::PARAM_STR);
+        $query->bindParam(':amount',$amount,PDO::PARAM_STR);
         $query->bindParam(':expense',$expense,PDO::PARAM_STR);
         $query->bindParam(':expensecategory',$expensecategory,PDO::PARAM_STR);
         $query->execute();
@@ -50,10 +50,10 @@ if(isset($_POST['submit']))
 
           $amount=$_POST['amount'];
           $newaccount = ($originalaccount-$amount);
-          // $sql="update  petty_cash set Account_Balance = '$newaccount' where property = 'church'";
-          // $query=$dbh->prepare($sql);
-          // $query->execute();
-          // $LastInsertId=$dbh->lastInsertId();
+          $sql="update  petty_cash set Account_Balance = '$newaccount' where property = 'church'";
+          $query=$dbh->prepare($sql);
+          $query->execute();
+          $LastInsertId=$dbh->lastInsertId();
           $sql="update  petty_balance set balance = '$newaccount' where property = 'church' ";
           $query=$dbh->prepare($sql);
           $query->execute();
